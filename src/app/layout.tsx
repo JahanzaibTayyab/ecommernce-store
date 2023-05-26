@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Inter, Inconsolata, Lora } from "next/font/google";
+import Providers from "@/components/Provider";
 
 export const inter = Inter({
   weight: ["400", "700"],
@@ -40,7 +41,9 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${inconsolata.variable} ${lora.variable}`}
     >
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
