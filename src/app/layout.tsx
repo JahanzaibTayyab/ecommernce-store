@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/assets/styles/globals.css";
 import { Inter, Inconsolata, Lora } from "next/font/google";
 import Providers from "@/components/Provider";
 
@@ -42,7 +42,9 @@ export default function RootLayout({
       className={`${inter.variable} ${inconsolata.variable} ${lora.variable}`}
     >
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="flex flex-col min-h-screen">{children}</div>
+        </Providers>
       </body>
     </html>
   );
