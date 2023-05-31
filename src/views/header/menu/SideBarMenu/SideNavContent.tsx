@@ -1,18 +1,18 @@
+"use client";
 import React from "react";
 import Link from "next/link";
-import { useLanguage } from "../../../../hooks/useLanguage";
-import { extraMenu } from "../../../../mock/menuItems";
+import { extraMenu } from "@/utils/mock/menuItems";
 import { useDispatch } from "react-redux";
-import { sideNavBarActions } from "../../../../store/sideNavBar-slice";
-import { activeMenuItemActions } from "../../../../store/activeMenuItem-slice";
-import { IDropDown } from "../../../../lib/types/dropDown";
-import MenuItems from "../../../UI/MenuItems/MenuItems";
+import { sideNavBarActions } from "@/store/slice/sideNavBar.slice";
+import { activeMenuItemActions } from "@/store/slice/activeMenuItem.slice";
+import { DropDown } from "@/types/dropDown";
+import MenuItems from "@/UI/MenuItems/MenuItems";
+import en from "@/locales/en";
 
 const SideNavContent = () => {
-  const { t } = useLanguage();
   const dispatch = useDispatch();
   const openNav = (
-    sidebarSideContent: IDropDown[] = [],
+    sidebarSideContent: DropDown[] = [],
     activeItemName: string,
     activeItemIndex: number
   ) => {
@@ -23,7 +23,7 @@ const SideNavContent = () => {
   };
   return (
     <div className="absolute w-full">
-      <div className="flex flex-col mt-3 pt-3 ltr:px-5 rtl:px-5 cursor-pointer">
+      <div className="flex flex-col mt-3 pt-3 px-5 cursor-pointer">
         {extraMenu.map((menuItem) => {
           return (
             <div
@@ -31,17 +31,15 @@ const SideNavContent = () => {
               key={menuItem.title}
             >
               <menuItem.icon />
-              <Link href={menuItem.href}>
-                <a className="mx-4">{t[`${menuItem.title}`]}</a>
+              <Link href={menuItem.href} className="mx-4">
+                {en[`${menuItem.title}`]}
               </Link>
             </div>
           );
         })}
         <hr className="mt-6 mb-4 border-gray-200" />
       </div>
-      <h2 className="font-bold text-lg py-3 ltr:px-5 rtl:px-5">
-        {t.CategoryOfGoods}
-      </h2>
+      <h2 className="font-bold text-lg py-3 px-5 ">{en.CategoryOfGoods}</h2>
       <MenuItems onClick={openNav} />
     </div>
   );

@@ -1,15 +1,17 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { activeMenuItemActions } from "../../../../store/activeMenuItem-slice";
-import menuItems from "../../../../mock/menuItems";
-import MenuItems from "../../../UI/MenuItems/MenuItems";
-import { IDropDown } from "../../../../lib/types/dropDown";
+import { activeMenuItemActions } from "@/store/slice/activeMenuItem.slice";
+import menuItems from "@/utils//mock/menuItems";
+import MenuItems from "@/UI/MenuItems/MenuItems";
+import { DropDown } from "@/types/dropDown";
+
 import SubMenu from "./SubMenu";
 const MenusContainer = () => {
-  const [subMenuItems, setSubMenuItems] = useState<IDropDown[]>();
+  const [subMenuItems, setSubMenuItems] = useState<DropDown[]>();
   const dispatch = useDispatch();
   function activeItem(
-    submenuList: IDropDown[] | undefined,
+    submenuList: DropDown[] | undefined,
     activeItemIndex: number,
     activeItemName: string
   ) {

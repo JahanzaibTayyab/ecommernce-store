@@ -1,12 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import { extraMenu } from "../../../../mock/menuItems";
-import { useLanguage } from "../../../../hooks/useLanguage";
+import { extraMenu } from "@/utils/mock/menuItems";
+import en from "@/locales/en";
 
 const ExtraMenu = () => {
-  const { t } = useLanguage();
   return (
-    <div className="flex items-center ltr:border-l-2 rtl:border-r-2 border-gray-300 grow rtl:mx-5 ltr:ml-2">
+    <div className="flex items-center border-l-2  border-gray-300 grow ml-2">
       {extraMenu.map((menuItem) => {
         return (
           <div
@@ -14,9 +13,7 @@ const ExtraMenu = () => {
             key={menuItem.title}
           >
             <menuItem.icon />
-            <Link href={menuItem.href}>
-              <a>{t[`${menuItem.title}`]}</a>
-            </Link>
+            <Link href={menuItem.href}>{en[`${menuItem.title}`]}</Link>
           </div>
         );
       })}

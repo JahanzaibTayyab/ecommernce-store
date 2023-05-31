@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import ExtraMenu from "./ExtraMenu";
 import MegaMenu from "./MegaMenu";

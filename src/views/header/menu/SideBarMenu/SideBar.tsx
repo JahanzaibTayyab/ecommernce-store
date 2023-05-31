@@ -1,16 +1,17 @@
+"use client";
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { sideNavBarActions } from "../../../../store/sideNavBar-slice";
+import { sideNavBarActions } from "@/store/slice/sideNavBar.slice";
 import { Transition } from "react-transition-group";
 import { GoGrabber } from "react-icons/go";
-import { ISideNavBarRootState } from "../../../../lib/types/sidebar";
+import { SideNavBarRootState } from "@/types/sidebar";
 import SideNav from "./SideNav";
 
 const SideBar = () => {
   const nodeRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
   const isNavbarOpen = useSelector(
-    (state: ISideNavBarRootState) => state.sideNavBar.isNavbarOpen
+    (state: SideNavBarRootState) => state.sideNavBar.isNavbarOpen
   );
   const closeNav = () => {
     dispatch(sideNavBarActions.closeNavbar());
@@ -47,7 +48,7 @@ const SideBar = () => {
                   }
                   `}
                 onClick={closeNav}
-              ></div>
+              />
             </>
           );
         }}
