@@ -28,7 +28,7 @@ export const footerContent = [
     subtitles: [
       {
         text: "common Questions",
-        href: "/blank",
+        href: "/faq",
       },
       {
         text: "return Procedures",

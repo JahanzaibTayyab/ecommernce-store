@@ -35,6 +35,7 @@
     "react-icons": "^4.9.0",
     "react-is": "^18.2.0",
     "react-redux": "^8.0.5",
+    "react-transition-group": "^4.4.5",
     "sanity": "^3.11.3",
     "stripe": "^12.7.0",
     "styled-components": "^5.3.11",
@@ -44,6 +45,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@types/js-cookie": "^3.0.3"
+    "@types/js-cookie": "^3.0.3",
+    "@types/react-transition-group": "^4.4.6"
   }
 }

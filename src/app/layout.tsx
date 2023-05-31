@@ -1,6 +1,7 @@
 import "@/assets/styles/globals.css";
 import { Inter, Inconsolata, Lora } from "next/font/google";
 import Providers from "@/components/Provider";
+import Header from "@/views/header";
 import Footer from "@/views/footer";
 
 export const inter = Inter({
@@ -46,6 +47,7 @@ export default function RootLayout({
         <Providers>
           <div className="flex flex-col min-h-screen">
             <main className="flex-grow  md:mt-40">
+              <Header />
               {children}
               <Footer />
             </main>
