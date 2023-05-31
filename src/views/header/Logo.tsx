@@ -13,8 +13,7 @@ const Logo = () => {
         alt="zishop-logo"
         width={120}
         height={25}
-        objectFit="contain"
-        className="cursor-pointer md:ltr:-mr-3"
+        className="cursor-pointer md:mr-3 object-contain"
       />
     </Link>
   );

@@ -3,7 +3,7 @@ import { AiFillInstagram } from "react-icons/ai";
 
 export const footerContent = [
   {
-    title: "onineShope Map",
+    title: "Shope Online Map",
     subtitles: [
       {
         text: "aboutUs",
