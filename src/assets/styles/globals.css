@@ -34,6 +34,7 @@
     --ring: 215 20.2% 65.1%;
 
     --radius: 0.5rem;
+
     --color-primary: 167, 27, 74; /* #A71B4A*/
     --color-secondary: 74, 76, 90; /* #4a4c5a*/
 
@@ -51,6 +52,7 @@
     --color-text-base: 66, 71, 80; /* #424750*/
     --color-text-muted: 107, 114, 128; /*#6b7280*/
     --color-text-side: 255, 231, 231; /*#fff*/
+
     --font-family: "Inter", "Inconsolata", "Lora", "Poppins", "Roboto",
       "sans-serif";
   }
