@@ -1,6 +1,7 @@
 import "@/assets/styles/globals.css";
 import { Inter, Inconsolata, Lora } from "next/font/google";
 import Providers from "@/components/Provider";
+import Footer from "@/views/footer";
 
 export const inter = Inter({
   weight: ["400", "700"],
@@ -41,9 +42,14 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${inconsolata.variable} ${lora.variable}`}
     >
-      <body className={inter.className}>
+      <body className={`px-5 xl:px-16 ${inter.className}`}>
         <Providers>
-          <div className="flex flex-col min-h-screen">{children}</div>
+          <div className="flex flex-col min-h-screen">
+            <main className="flex-grow  md:mt-40">
+              {children}
+              <Footer />
+            </main>
+          </div>
         </Providers>
       </body>
     </html>

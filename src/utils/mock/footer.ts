@@ -3,35 +3,35 @@ import { AiFillInstagram } from "react-icons/ai";
 
 export const footerContent = [
   {
-    title: "zishopMap",
+    title: "onineShope Map",
     subtitles: [
       {
         text: "aboutUs",
         href: "/about",
       },
       {
-        text: "contactUs",
+        text: "contact Us",
         href: "/blank",
       },
       {
-        text: "saleInZishop",
+        text: "sale In OnlineShop",
         href: "/blank",
       },
       {
-        text: "careerOpportunities",
+        text: "career Opportunities",
         href: "/blank",
       },
     ],
   },
   {
-    title: "customerServices",
+    title: "customer Services",
     subtitles: [
       {
-        text: "commonQuestions",
+        text: "common Questions",
         href: "/blank",
       },
       {
-        text: "returnProcedures",
+        text: "return Procedures",
         href: "/blank",
       },
       {
@@ -41,18 +41,18 @@ export const footerContent = [
     ],
   },
   {
-    title: "shoppingGuide",
+    title: "shopping Guide",
     subtitles: [
       {
-        text: "howToPlaceAnOrder",
+        text: "how To Place An Order",
         href: "/blank",
       },
       {
-        text: "orderSubmissionProcedure",
+        text: "order Submission Procedure",
         href: "/blank",
       },
       {
-        text: "paymentMethods",
+        text: "payment Methods",
         href: "/blank",
       },
     ],

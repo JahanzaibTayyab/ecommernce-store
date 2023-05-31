@@ -53,9 +53,6 @@
     --color-text-side: 255, 231, 231; /*#fff*/
     --font-family: "Inter", "Inconsolata", "Lora", "Poppins", "Roboto",
       "sans-serif";
-    --font-mono: var(--font-inconsolata);
-    --font-sans: var(--font-inter);
-    --font-serif: var(--font-lora);
   }
 
   .dark {
@@ -161,8 +158,8 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 0.4rem;
+  height: 0.4rem;
 }
 
 ::-webkit-scrollbar-track {
