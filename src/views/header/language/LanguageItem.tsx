@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 interface Props {
@@ -8,7 +7,6 @@ interface Props {
   onCloseBox: (isLangOpen: boolean) => void;
 }
 const LanguageItem: React.FC<Props> = ({ language, onCloseBox }) => {
-  const router = useRouter();
   const [lang, setLang] = useState("");
 
   function onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {

@@ -13,13 +13,13 @@ const Settings = () => {
     (state: SettingBoxRootState) => state.settingBox.isOpen
   );
 
-  function toggleShowSettingBox() {
+  const toggleShowSettingBox = () => {
     dispatch(settingBoxActions.toggleSettingBox());
-  }
+  };
 
-  function onCloseSettingBox() {
+  const onCloseSettingBox = () => {
     dispatch(settingBoxActions.closeSettingBox());
-  }
+  };
 
   return (
     <div className="relative md:hidden flex justify-between items-center z-[150]">

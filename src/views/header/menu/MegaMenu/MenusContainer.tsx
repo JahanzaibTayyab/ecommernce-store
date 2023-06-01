@@ -10,15 +10,16 @@ import SubMenu from "./SubMenu";
 const MenusContainer = () => {
   const [subMenuItems, setSubMenuItems] = useState<DropDown[]>();
   const dispatch = useDispatch();
-  function activeItem(
+
+  const activeItem = (
     submenuList: DropDown[] | undefined,
     activeItemIndex: number,
     activeItemName: string
-  ) {
+  ) => {
     setSubMenuItems(submenuList);
     dispatch(activeMenuItemActions.setActiveMenuItemIndex(activeItemIndex));
     dispatch(activeMenuItemActions.setActiveMenuItemText(activeItemName));
-  }
+  };
 
   useEffect(() => {
     setSubMenuItems(menuItems[0].productsGroup);

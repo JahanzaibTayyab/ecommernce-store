@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { settingBoxActions } from "@/store/slice/settingBox.slice";
 import { MdLanguage } from "react-icons/md";
@@ -9,9 +9,9 @@ const Language = () => {
   const dispatch = useDispatch();
   const [openLang, setOpenLang] = useState(false);
 
-  function onCloseLangBox(isOpen: boolean) {
+  const onCloseLangBox = (isOpen: boolean) => {
     setOpenLang(isOpen);
-  }
+  };
 
   return (
     <div className="relative  mr-2 pr-2">

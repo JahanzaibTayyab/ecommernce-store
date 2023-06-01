@@ -5,7 +5,7 @@ import { DropDown } from "@/types/dropDown";
 import { useDispatch, useSelector } from "react-redux";
 import { megaMenuActions } from "@/store/slice/megaMenu.slice";
 import { ActiveMenuItemRootState } from "@/types/activeMenuItem";
-import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
+import { HiChevronRight } from "react-icons/hi";
 import en from "@/locales/en";
 
 interface Props {

@@ -5,6 +5,7 @@ import { IconType } from "react-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { settingBoxActions } from "@/store/slice/settingBox.slice";
 import { SettingBoxRootState } from "@/types/settingBox";
+import en from "@/locales/en";
 
 interface Props {
   theme: string;
@@ -38,7 +39,7 @@ const ThemeItem: React.FC<Props> = ({ theme, Icon, currentTheme }) => {
           }}
         />
       </button>
-      {/* <h4 className="md:hidden rtl:mr-3 ltr:ml-3">{t[`${theme}`]}</h4> */}
+      <h4 className="md:hidden mr-3">{en[`${theme}`]}</h4>
     </div>
   );
 };

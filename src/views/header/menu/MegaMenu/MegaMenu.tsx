@@ -11,12 +11,14 @@ const MegaMenu = () => {
   const nodeRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useDispatch();
-  function showMegaMenuHandler() {
+
+  const showMegaMenuHandler = () => {
     dispatch(megaMenuActions.openMegaMenu());
-  }
-  function closeMegaMenuHandler() {
+  };
+  const closeMegaMenuHandler = () => {
     dispatch(megaMenuActions.closeMegaMenu());
-  }
+  };
+
   const isMegaMenuOpen = useSelector(
     (state: MegaMenuRootState) => state.megaMenu.isMegaMenuOpen
   );

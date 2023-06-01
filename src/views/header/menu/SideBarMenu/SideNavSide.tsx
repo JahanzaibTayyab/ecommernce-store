@@ -2,7 +2,6 @@
 import React, { useRef } from "react";
 import { Transition } from "react-transition-group";
 import {
-  HiOutlineArrowSmRight,
   HiOutlineArrowSmLeft,
   HiChevronRight,
   HiChevronLeft,
@@ -18,7 +17,6 @@ import { ActiveMenuItemRootState } from "@/types/activeMenuItem";
 
 const SideNavSide = () => {
   const dispatch = useDispatch();
-  const locale = "en";
 
   const dropDownList = useSelector(
     (state: SideNavBarRootState) => state.sideNavBar.dropDownList
@@ -42,9 +40,6 @@ const SideNavSide = () => {
 
   const nodeRef = useRef<HTMLDivElement>(null);
 
-  const BackArrow =
-    locale === "en" ? HiOutlineArrowSmLeft : HiOutlineArrowSmRight;
-
   return (
     <>
       {dropDownList.length ? (
@@ -60,8 +55,7 @@ const SideNavSide = () => {
               <div
                 ref={nodeRef}
                 className={`max-w-[380px] w-[90%] h-screen pb-4 fixed top-0 shadow-md z-[1010]   bg-palette-card origin-left overflow-auto md:hidden
-                ${locale == "en" ? "left-0" : "right-0"} 
-                
+                "left-0"
                 ${
                   state === "entering"
                     ? "animate-sidenavLTREntering"
@@ -75,24 +69,21 @@ const SideNavSide = () => {
                   className="flex items-center pt-4 pb-3 px-6 font-bold text-lg cursor-pointer"
                   onClick={closeSidebar}
                 >
-                  <BackArrow style={{ fontSize: "1.5rem" }} />
+                  <HiOutlineArrowSmLeft style={{ fontSize: "1.5rem" }} />
                   <h3 className="ml-2  py-1">{en.mainMenu}</h3>
                 </div>
 
                 <hr className="mb-6" />
 
                 <div className="pr-6  pb-6 mb-3 border-b-2 border-slate-400-600">
-                  <Link href={`/${activeMenuItemText}`}>
-                    <a className="flex items-center justify-between">
-                      <div className="font-bold ml-6" onClick={closeNavbar}>
-                        {en.seeAllProduct}
-                      </div>
-                      {locale === "en" ? (
-                        <HiChevronRight style={{ fontSize: "1.5rem" }} />
-                      ) : (
-                        <HiChevronLeft style={{ fontSize: "1.5rem" }} />
-                      )}
-                    </a>
+                  <Link
+                    href={`/${activeMenuItemText}`}
+                    className="flex items-center justify-between"
+                  >
+                    <div className="font-bold ml-6" onClick={closeNavbar}>
+                      {en.seeAllProduct}
+                    </div>
+                    <HiChevronRight style={{ fontSize: "1.5rem" }} />
                   </Link>
                 </div>
                 {dropDownList.map((item) => {
