@@ -22,7 +22,7 @@ const SubMenu: React.FC<Props> = ({ subMenuItems }) => {
   return (
     <div className="flex flex-col px-6 py-5 w-full">
       <div className="flex items-center hover:text-palette-primary transition-color duration-300">
-        {subMenuItems ? (
+        {!!subMenuItems?.length ? (
           <>
             <Link
               href={`/${activeMenuItemText}`}
@@ -37,7 +37,7 @@ const SubMenu: React.FC<Props> = ({ subMenuItems }) => {
       </div>
       <br />
       <div className="relative grow md:columns-[188px] xl:columns-3 xl:max-w-4xl    ">
-        {subMenuItems && activeMenuItemText ? (
+        {!!subMenuItems?.length && activeMenuItemText ? (
           <>
             {subMenuItems.map((menuTitle, index) => {
               return (
