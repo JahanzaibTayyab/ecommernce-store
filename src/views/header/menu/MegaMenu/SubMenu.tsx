@@ -26,7 +26,7 @@ const SubMenu: React.FC<Props> = ({ subMenuItems }) => {
           <>
             <Link
               href={`/${activeMenuItemText}`}
-              className="block rtl:ml-4 lrt:mr-4 text-[16px] "
+              className="block ml-4 mr-4 text-[16px] "
               onClick={() => dispatch(megaMenuActions.closeMegaMenu())}
             >
               {en.seeAllProduct}
@@ -43,23 +43,23 @@ const SubMenu: React.FC<Props> = ({ subMenuItems }) => {
               return (
                 <div className="py-3" key={`${menuTitle}-${index}`}>
                   <Link
-                    href={`/${activeMenuItemText}/${menuTitle.title}`}
-                    className="block text-sm rtl:ml-10 ltr:mr-10 font-bold px-2 ltr:border-l-4 rtl:border-r-4 border-palette-primary rounded-sm hover:text-palette-primary transition-color duration-300"
+                    href={`/${activeMenuItemText}/${menuTitle.slug}`}
+                    className="block text-sm ml-6  font-bold px-2 border-l-4 border-palette-primary rounded-sm hover:text-palette-primary transition-color duration-300 capitalize"
                     onClick={() => dispatch(megaMenuActions.closeMegaMenu())}
                   >
-                    {en[`${menuTitle.title}`]}
+                    {`${menuTitle.name}`}
                   </Link>
                   {menuTitle.subtitles.map((subTitle, index) => {
                     return (
                       <Link
-                        href={`/${activeMenuItemText}/${menuTitle.title}/${subTitle}`}
+                        href={`/${activeMenuItemText}/${menuTitle.slug}/${subTitle}`}
                         key={`${subTitle}-${index}`}
-                        className="block py-2 hover:text-palette-primary transition-color duration-200"
+                        className="block py-2 hover:text-palette-primary transition-color duration-200 capitalize"
                         onClick={() =>
                           dispatch(megaMenuActions.closeMegaMenu())
                         }
                       >
-                        {en[`${subTitle}`]}
+                        {`${subTitle}`}
                       </Link>
                     );
                   })}

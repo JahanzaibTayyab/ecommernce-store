@@ -3,13 +3,11 @@ import React from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { megaMenuActions } from "@/store/slice/megaMenu.slice";
-import en from "@/locales/en";
-import menuItems from "@/utils/mock/menuItems";
 import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
 import { DropDown } from "@/types/dropDown";
-import { useRouter } from "next/navigation";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
 import { ActiveMenuItemRootState } from "@/types/activeMenuItem";
+import { category } from "@/types/categories";
 
 interface Props {
   onClick?: (
@@ -22,10 +20,11 @@ interface Props {
     index: number,
     activeItemName: string
   ) => void;
+  menuItems: Array<category>;
 }
 
 const MenuItems: React.FC<Props> = (props) => {
-  const route = useRouter();
+  const { menuItems } = props;
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
   const ArrowDirection = HiChevronRight;
@@ -48,7 +47,7 @@ const MenuItems: React.FC<Props> = (props) => {
         return (
           <li
             className="py-3 md:py-3 transition-color duration-300 hover:text-palette-primary font-bold"
-            key={item.category}
+            key={item._id}
           >
             {width <= 768 ? (
               <div
@@ -56,30 +55,28 @@ const MenuItems: React.FC<Props> = (props) => {
                   index === activeMenuItemIndex ? "md:text-palette-primary" : ""
                 }`}
                 onClick={() =>
-                  onMenuItemClickHandler(
-                    item.productsGroup,
-                    item.category,
-                    index
-                  )
+                  onMenuItemClickHandler(item.productsGroup, item.slug, index)
                 }
                 onMouseOver={() =>
-                  props.onMouseOver?.(item.productsGroup, index, item.category)
+                  props.onMouseOver?.(item.productsGroup, index, item.slug)
                 }
               >
-                <item.icon className="w-6 h-6 " />
+                {/* <item.icon className="w-6 h-6 " /> */}
                 <div
                   className={`mx-4 grow ${
-                    !item.productsGroup ? "text-gray-400 font-normal" : ""
+                    !item.productsGroup.length
+                      ? "text-gray-400 font-normal capitalize"
+                      : ""
                   }`}
                 >
-                  {en[item.category]}
+                  {item.name}
                 </div>
                 {item.productsGroup ? (
                   <ArrowDirection style={{ fontSize: "1rem" }} />
                 ) : null}
               </div>
             ) : (
-              <Link href={`/${item.category}`}>
+              <Link href={`/${item.slug}`}>
                 <div
                   className={`flex items-center mt-3 px-5  cursor-pointer text-sm ${
                     index === activeMenuItemIndex
@@ -87,29 +84,23 @@ const MenuItems: React.FC<Props> = (props) => {
                       : ""
                   }`}
                   onClick={() =>
-                    onMenuItemClickHandler(
-                      item.productsGroup,
-                      item.category,
-                      index
-                    )
+                    onMenuItemClickHandler(item.productsGroup, item.slug, index)
                   }
                   onMouseOver={() =>
-                    props.onMouseOver?.(
-                      item.productsGroup,
-                      index,
-                      item.category
-                    )
+                    props.onMouseOver?.(item.productsGroup, index, item.slug)
                   }
                 >
-                  <item.icon className="w-6 h-6 " />
+                  {/* <item.icon className="w-6 h-6 " /> */}
                   <div
                     className={`mx-4 grow ${
-                      !item.productsGroup ? "text-gray-400 font-normal" : ""
+                      !item.productsGroup.length
+                        ? "text-gray-400 font-normal capitalize"
+                        : ""
                     }`}
                   >
-                    {en[item.category]}
+                    {item.name}
                   </div>
-                  {item.productsGroup ? (
+                  {!!item.productsGroup.length ? (
                     <ArrowDirection style={{ fontSize: "1rem" }} />
                   ) : null}
                 </div>

@@ -2,15 +2,17 @@
 import React from "react";
 import Link from "next/link";
 import { extraMenu } from "@/utils/mock/menuItems";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sideNavBarActions } from "@/store/slice/sideNavBar.slice";
 import { activeMenuItemActions } from "@/store/slice/activeMenuItem.slice";
 import { DropDown } from "@/types/dropDown";
 import MenuItems from "@/UI/MenuItems/MenuItems";
+
 import en from "@/locales/en";
 
 const SideNavContent = () => {
   const dispatch = useDispatch();
+  const menuItems = useSelector((state: any) => state.categories.data);
   const openNav = (
     sidebarSideContent: DropDown[] = [],
     activeItemName: string,
@@ -40,7 +42,7 @@ const SideNavContent = () => {
         <hr className="mt-6 mb-4 border-gray-200" />
       </div>
       <h2 className="font-bold text-lg py-3 px-5 ">{en.CategoryOfGoods}</h2>
-      <MenuItems onClick={openNav} />
+      <MenuItems onClick={openNav}  menuItems={menuItems}/>
     </div>
   );
 };

@@ -1,24 +1,46 @@
-import React from "react";
+"use client";
 import dynamic from "next/dynamic";
+import { useCallback, useEffect } from "react";
+import { useSelectedLayoutSegment } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { categoryActions } from "@/store/slice/categories.slice";
+
 import Menu from "./menu";
 import Logo from "./Logo";
 import Settings from "./Settings";
 import SearchBar from "./SearchBar";
-
 //import CartIcon from "../cart/CartIcon";
 import Language from "./language/Language";
 
 const UserBox = dynamic(() => import("./user"), {
   ssr: false,
 });
-
 const Theme = dynamic(() => import("./theme/Theme"), {
   ssr: false,
 });
+import { hideLayoutRoutes } from "@/utils/contsants";
 
-const index = () => {
+const Header = () => {
+  const dispatch = useDispatch();
+  let segment = useSelectedLayoutSegment();
+  const isLayoutNeeded = !hideLayoutRoutes.includes(segment as string);
+
+  const getCategories = useCallback(async () => {
+    const categoryResponse: any = await fetch("api/getCategories");
+    const categories = await categoryResponse.json();
+    dispatch(categoryActions.setCategories(categories));
+  }, []);
+
+  useEffect(() => {
+    getCategories();
+  }, [getCategories]);
+
   return (
-    <header className="md:fixed left-0 right-0 top-0 md:bg-palette-fill shadow-sm pt-4 z-[1000]">
+    <header
+      className={`${
+        isLayoutNeeded ? "block" : "hidden"
+      } md:fixed left-0 right-0 top-0 md:bg-palette-fill shadow-sm pt-4 z-[1000]`}
+    >
       <div className="flex flex-col md:px-4 mb-2">
         <div className="flex items-center justify-between md:order-2 md:mt-2  relative">
           <Menu />
@@ -49,4 +71,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Header;
