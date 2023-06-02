@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { activeMenuItemActions } from "@/store/slice/activeMenuItem.slice";
-//import menuItems from "@/utils//mock/menuItems";
-import MenuItems from "@/UI/MenuItems/MenuItems";
+import MenuItems from "@/components/MenuItems/MenuItems";
 import { DropDown } from "@/types/dropDown";
 import SubMenu from "./SubMenu";
 

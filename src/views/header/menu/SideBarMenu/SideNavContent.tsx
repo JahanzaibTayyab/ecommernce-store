@@ -6,7 +6,7 @@ import { extraMenu } from "@/utils/mock/menuItems";
 import { sideNavBarActions } from "@/store/slice/sideNavBar.slice";
 import { activeMenuItemActions } from "@/store/slice/activeMenuItem.slice";
 import { DropDown } from "@/types/dropDown";
-import MenuItems from "@/UI/MenuItems/MenuItems";
+import MenuItems from "@/components/MenuItems/MenuItems";
 import en from "@/locales/en";
 
 const SideNavContent = () => {

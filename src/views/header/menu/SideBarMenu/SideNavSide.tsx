@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useRef } from "react";
 import { Transition } from "react-transition-group";
 import { HiOutlineArrowSmLeft, HiChevronRight } from "react-icons/hi";
-import DropDown from "@/UI/DropDown";
+import DropDown from "@/components/DropDown";
 import { useDispatch, useSelector } from "react-redux";
 import { sideNavBarActions } from "@/store/slice/sideNavBar.slice";
 import { SideNavBarRootState } from "@/types/sidebar";

@@ -1,4 +1,6 @@
 import "@/assets/styles/globals.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { Inter, Inconsolata, Lora } from "next/font/google";
 import Providers from "@/components/Provider";
 import Header from "@/views/header";

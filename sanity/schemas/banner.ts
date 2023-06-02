@@ -86,15 +86,4 @@ export default defineType({
       description: "Background Color",
     }),
   ],
-  //   preview: {
-  //     select: {
-  //       title: "name",
-  //       media: "image",
-  //       subtitle: "parent.name",
-  //     },
-  //     prepare(selection) {
-  //       const { subtitle } = selection;
-  //       return { ...selection, subtitle: subtitle ? `– ${subtitle}` : `` };
-  //     },
-  //   },
 });
