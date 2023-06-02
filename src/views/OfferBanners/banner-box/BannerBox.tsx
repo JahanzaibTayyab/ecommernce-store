@@ -32,7 +32,7 @@ const BannerBox: React.FC<Props> = ({
     <div className="col-span-6 lg:col-span-6 flex  justify-center  shadow-2xl relative rounded-lg overflow-hidden dark:bg-gray-500/70 !dark:bg-blend-multiply w-full">
       <Image
         src={imgSrc}
-        width={3000}
+        width={2500}
         height={imgHeight}
         alt={title}
         className="drop-shadow-lg object-cover w-full object-center hover:scale-110 transition duration-1000"
