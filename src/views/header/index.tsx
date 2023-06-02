@@ -9,7 +9,7 @@ import Menu from "./menu";
 import Logo from "./Logo";
 import Settings from "./Settings";
 import SearchBar from "./SearchBar";
-//import CartIcon from "../cart/CartIcon";
+import CartIcon from "../cart/CartIcon";
 import Language from "./language/Language";
 
 const UserBox = dynamic(() => import("./user"), {
@@ -63,7 +63,7 @@ const Header = () => {
           </div>
           <div className="ml-2 sm:ml-4 flex items-center justify-between ">
             <UserBox />
-            {/* <CartIcon /> */}
+            <CartIcon />
           </div>
         </div>
       </div>

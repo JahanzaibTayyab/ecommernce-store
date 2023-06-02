@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { benefitContent } from "@/utils/mock/benefits";
 import en from "@/locales/en";

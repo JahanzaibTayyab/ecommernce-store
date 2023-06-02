@@ -1,6 +1,6 @@
 import { ProductDetails, Slug } from "./products";
 
-export type ICartProduct = {
+export type CartProduct = {
   image: any;
   name: string;
   slug: Slug;

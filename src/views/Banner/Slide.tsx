@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 import Link from "next/link";
 import { Banner } from "@/types/banner";
 import { urlForImage } from "@/lib/sanityClient";
