@@ -54,16 +54,16 @@ const Header = () => {
           </div>
         </div>
         <hr className="md:hidden" />
-        <div className="mb-2 mt-4 md:mt-0 flex  items-center md:order-1">
+        <div className="mb-2 mt-4 md:mt-0 flex items-center md:order-1">
           <div className="hidden md:block">
             <Logo />
           </div>
           <div className="flex-grow">
             <SearchBar />
           </div>
-          <div className="ltr:ml-2 rtl:mr-2 sm:ltr:ml-4 sm:rtl:mr-4 flex items-center justify-between ">
+          <div className="ml-2 sm:ml-4 flex items-center justify-between ">
             <UserBox />
-            {/* <CartIcon />  */}
+            {/* <CartIcon /> */}
           </div>
         </div>
       </div>

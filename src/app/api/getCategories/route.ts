@@ -11,13 +11,15 @@ export async function GET(req: NextRequest) {
         description,
         thumbnail,
         subtitles,
+        mainImage,
         "productsGroup": *[_type == 'category' && references(^._id)] | order(name asc) {
           _id,
           name,
           slug,
           description,
           thumbnail,
-          subtitles
+          subtitles,
+          mainImage
         }
       }`);
     return NextResponse.json(response);

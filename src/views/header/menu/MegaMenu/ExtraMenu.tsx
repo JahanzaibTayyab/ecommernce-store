@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 import Link from "next/link";
 import { extraMenu } from "@/utils/mock/menuItems";
 import en from "@/locales/en";

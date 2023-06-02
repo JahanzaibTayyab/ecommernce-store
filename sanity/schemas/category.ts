@@ -50,6 +50,15 @@ export default defineType({
       },
     }),
     defineField({
+      name: "mainImage",
+      title: "Featured Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    }),
+
+    defineField({
       title: "Subtitles",
       name: "subtitles",
       type: "array",
@@ -59,12 +68,12 @@ export default defineType({
   preview: {
     select: {
       title: "name",
-      media: "thumbnail",
       subtitle: "parent.name",
+      media: "mainImage",
     },
-    prepare: ({ title, subtitle }) => ({
-      title,
-      subtitle: subtitle ? `– ${subtitle}` : ``,
-    }),
+    prepare(selection) {
+      const { subtitle } = selection;
+      return { ...selection, subtitle: subtitle ? `– ${subtitle}` : `` };
+    },
   },
 });

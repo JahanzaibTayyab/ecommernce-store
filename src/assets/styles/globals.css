@@ -102,10 +102,6 @@
     --color-text-muted: 140, 154, 175; /*#8c9aaf*/
     --color-text-side: 255, 231, 231; /*#fff*/
   }
-  html[dir="ltr"] {
-    --font-family: "Inter", "Inconsolata", "Lora", "Poppins", "Roboto",
-      "sans-serif";
-  }
 }
 
 @layer base {

@@ -1,13 +1,12 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { extraMenu } from "@/utils/mock/menuItems";
 import { useDispatch, useSelector } from "react-redux";
+import { extraMenu } from "@/utils/mock/menuItems";
 import { sideNavBarActions } from "@/store/slice/sideNavBar.slice";
 import { activeMenuItemActions } from "@/store/slice/activeMenuItem.slice";
 import { DropDown } from "@/types/dropDown";
 import MenuItems from "@/UI/MenuItems/MenuItems";
-
 import en from "@/locales/en";
 
 const SideNavContent = () => {
@@ -41,8 +40,8 @@ const SideNavContent = () => {
         })}
         <hr className="mt-6 mb-4 border-gray-200" />
       </div>
-      <h2 className="font-bold text-lg py-3 px-5 ">{en.CategoryOfGoods}</h2>
-      <MenuItems onClick={openNav}  menuItems={menuItems}/>
+      <h2 className="font-bold text-lg py-3 px-5">{en.CategoryOfGoods}</h2>
+      <MenuItems onClick={openNav} menuItems={menuItems} />
     </div>
   );
 };
