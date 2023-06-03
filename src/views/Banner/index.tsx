@@ -1,6 +1,6 @@
 "use client";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useEffect, useCallback, useState, Suspense } from "react";
+import { useEffect, useCallback, useState } from "react";
 import Slider from "react-slick";
 import Slide from "./Slide";
 import { NextArrow, PrevArrow } from "./Arrows";
@@ -11,9 +11,7 @@ const Banner = () => {
   const [banners, setBanner] = useState<Banner[]>();
 
   const getBannersData = useCallback(async () => {
-    const bannerResponse: any = await fetch("api/getBanners", {
-      cache: "no-store",
-    });
+    const bannerResponse: any = await fetch("api/getBanners");
     const banners = await bannerResponse.json();
     setBanner(banners);
   }, []);

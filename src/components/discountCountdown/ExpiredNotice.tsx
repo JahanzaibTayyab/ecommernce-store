@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 import en from "@/locales/en";
 
 const ExpiredNotice = () => {

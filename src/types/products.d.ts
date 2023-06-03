@@ -36,14 +36,16 @@ export type Image = {
 };
 
 export type Product = {
+  _id: string;
+  quantity?: number;
   image: any;
   name: string;
   slug: Slug;
   price: number;
   discount?: number;
-  details?: ProductDetails[];
+  details?: Array<any>;
   brand: string;
-  category: string[];
+  category: Record<string, unknown>;
   isOffer?: boolean;
   registerDate?: string;
   timeStamp?: number;

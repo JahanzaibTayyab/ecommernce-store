@@ -8,7 +8,7 @@ function Providers({ children }: { children: React.ReactNode }) {
   return (
     <Provider store={store}>
       <ThemeProvider enableSystem={true} attribute="class">
-        <NextNProgress height={6} />
+        <NextNProgress height={7} />
         {children}
       </ThemeProvider>
     </Provider>

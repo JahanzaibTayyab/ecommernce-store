@@ -47,12 +47,10 @@ export default function RootLayout({
     >
       <body className={`px-5 xl:px-16 ${inter.className}`}>
         <Providers>
-          <div className="flex flex-col min-h-screen">
-            <main className="flex-grow md:mt-40">
-              <Header />
-              {children}
-              <Footer />
-            </main>
+          <div className="flex flex-col min-h-[100vh]">
+            <Header />
+            <main className="flex-grow  md:mt-40">{children}</main>
+            <Footer />
           </div>
         </Providers>
       </body>

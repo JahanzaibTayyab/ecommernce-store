@@ -11,6 +11,7 @@ function withOpacity(variableName) {
 
 module.exports = {
   darkMode: ["class"],
+  mode: "jit",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -97,12 +98,6 @@ module.exports = {
             from: { height: "var(--radix-accordion-content-height)" },
             to: { height: 0 },
           },
-        },
-        animation: {
-          "accordion-down": "accordion-down 0.2s ease-out",
-          "accordion-up": "accordion-up 0.2s ease-out",
-        },
-        keyframes: {
           sidenavLTR: {
             "0%": { transform: "translateX(-100%)" },
             "100%": { transform: "translateX(0px)" },
@@ -121,6 +116,8 @@ module.exports = {
           },
         },
         animation: {
+          "accordion-down": "accordion-down 0.2s ease-out",
+          "accordion-up": "accordion-up 0.2s ease-out",
           sidenavLTREntering: "sidenavLTR 0.3s ease-in-out forwards",
           sidenavRTLEntering: "sidenavRTL 0.3s ease-in-out forwards",
           sidenavLTRExit: "sidenavLTR 0.3s ease-in-out reverse forwards",

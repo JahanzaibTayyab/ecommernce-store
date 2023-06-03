@@ -10,9 +10,6 @@ export default defineType({
       title: "Image",
       type: "array",
       of: [{ type: "image" }],
-      options: {
-        hotspot: true,
-      },
     }),
     defineField({
       name: "name",
@@ -37,6 +34,12 @@ export default defineType({
     }),
 
     defineField({
+      name: "quantity",
+      title: "Quantity",
+      type: "number",
+    }),
+
+    defineField({
       name: "discount",
       title: "Discount(%)",
       type: "number",
@@ -45,8 +48,8 @@ export default defineType({
     defineField({
       name: "category",
       title: "Category",
-      type: "reference",
-      to: [{ type: "category" }],
+      type: "array",
+      of: [{ type: "string" }],
     }),
     defineField({
       name: "details",
@@ -78,4 +81,10 @@ export default defineType({
       type: "number",
     }),
   ],
+  preview: {
+    select: {
+      title: "name",
+      media: "image",
+    },
+  },
 });

@@ -1,3 +1,4 @@
+"use client";
 import en from "@/locales/en";
 interface Props {
   value: number;

@@ -1,5 +1,3 @@
-"use client";
-import React from "react";
 import { calculateDiscountPercentage, gbpCurrencyFormat } from "@/utils/helper";
 
 interface Props {
@@ -24,8 +22,8 @@ const ProductPrice: React.FC<Props> = ({
     ? "text-xl md:text-3xl"
     : "text-md md:text-lg";
   const textDiscountPriceSize = isLargeSize
-    ? "text-md md:text-xl"
-    : "text-[12px] md:text-md";
+    ? "text-sm md:text-md"
+    : "text-[12px] md:text-base";
 
   const flexDirection = isInSlider || locale === "en" ? "row" : "row-reverse";
 

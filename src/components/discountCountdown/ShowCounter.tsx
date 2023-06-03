@@ -1,3 +1,4 @@
+"use client";
 import DateTimeDisplay from "./DateTimeDisplay";
 
 interface Props {

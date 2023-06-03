@@ -4,6 +4,7 @@ import BrandBox from "./BrandBox";
 import { brandContent } from "@/utils/mock/brand";
 import Slider from "react-slick";
 import SectionTitle from "@/components/SectionTitle";
+
 const Brands = () => {
   const settings = {
     infinite: true,

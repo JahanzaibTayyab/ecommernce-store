@@ -41,6 +41,7 @@ const MenuItems: React.FC<Props> = (props) => {
   const activeMenuItemIndex = useSelector(
     (state: ActiveMenuItemRootState) => state.activeMenuItem.activeMenuItemIndex
   );
+
   return (
     <ul className="rounded-lg">
       {menuItems.map((item, index) => {

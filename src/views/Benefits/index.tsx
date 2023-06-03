@@ -16,7 +16,6 @@ const Benefits = () => {
               width={48}
               src={benefitItem.imgSrc}
               alt={benefitItem.title}
-              className=""
             />
             <p className="py-2 text-sm md:text-base text-palette-base/90 text-center capitalize">
               {en[`${benefitItem.title}`]}
