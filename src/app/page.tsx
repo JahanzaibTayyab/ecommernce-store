@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import Benefits from "@/views/Benefits";
-import Banner from "@/views/Banner";
+const Banner = dynamic(() => import("@/views/Banner"));
 import Offers from "@/views/Offers";
 const Category = dynamic(() => import("@/views/category"));
 const Newest = dynamic(() => import("@/views/newest"));
