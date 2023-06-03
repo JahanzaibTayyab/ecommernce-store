@@ -36,6 +36,7 @@
     "react-is": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-slick": "^0.29.0",
+    "react-star-rating-component": "^1.4.1",
     "react-transition-group": "^4.4.5",
     "rxjs": "^7.8.1",
     "sanity": "^3.11.3",

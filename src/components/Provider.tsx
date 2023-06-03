@@ -1,4 +1,5 @@
 "use client";
+import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "next-themes";
 import NextNProgress from "nextjs-progressbar";
@@ -11,6 +12,7 @@ function Providers({ children }: { children: React.ReactNode }) {
         <NextNProgress height={7} />
         {children}
       </ThemeProvider>
+      <Toaster position="top-right" reverseOrder={false} />
     </Provider>
   );
 }

@@ -59,10 +59,10 @@ const CartBox = () => {
         </div>
         {cartItems.length ? (
           <div className="flex items-center sticky bottom-0 left-0 right-0 bg-palette-card font-normal py-3 px-4">
-            <div className="flex flex-col flex-grow ltr:mr-2 rtl:ml-2">
+            <div className="flex flex-col flex-grow mr-2">
               <p className="text-sm">{en.payableAmount}</p>
               <p className="self-end text-sm font-bold">
-                `Rs ${gbpCurrencyFormat(cartTotalAmount)}`
+                Rs ${gbpCurrencyFormat(cartTotalAmount)}
               </p>
             </div>
             {!userInfo ? (
