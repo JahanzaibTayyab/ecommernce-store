@@ -9,8 +9,8 @@ interface Props {
 }
 const SimilarProducts: React.FC<Props> = ({ products }) => {
   return (
-    <div>
-      <CarouselBox title="similarProducts" full={true}>
+    <div className="flex">
+      <CarouselBox title="similarProducts">
         {products.map((product) => (
           <CarouselBoxCard key={product.slug.current} product={product} />
         ))}
