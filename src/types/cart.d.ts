@@ -1,13 +1,14 @@
 import { ProductDetails, Slug } from "./products";
 
 export type CartProduct = {
+  _id: string;
   image: any;
   name: string;
   slug: Slug;
   price: number;
   discount?: number;
   brand: string;
-  category: string[];
+  category: Record<string, unknown>;
   starRating: number;
   isOffer?: boolean;
   details?: ProductDetails[];
