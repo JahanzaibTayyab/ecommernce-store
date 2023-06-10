@@ -1,6 +1,8 @@
 "use client";
+
 import Link from "next/link";
-import React from "react";
+import toast from "react-hot-toast";
+import getStripePromise from "@/lib/stripe";
 import { useSelector } from "react-redux";
 import { CartRootState } from "@/types/cart";
 import ProductPrice from "../ProductPrice";
@@ -13,6 +15,48 @@ const OrderSummaryBox = () => {
   const totalQuantity = useSelector(
     (state: CartRootState) => state.cart.totalQuantity
   );
+
+  const cartItems = useSelector((state: CartRootState) => state.cart.items);
+
+  const handleCheckout = async () => {
+    const toastId = toast.loading("trying checkout");
+    const stripe = await getStripePromise();
+
+    fetch(`api/stripe`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-cache",
+      body: JSON.stringify(cartItems),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        toast.dismiss(toastId);
+        if (response.success === false || !stripe) {
+          toast.error("checkout failed");
+        } else {
+          toast.loading("Redirecting...");
+          stripe.redirectToCheckout({ sessionId: response.id });
+        }
+      })
+      .catch(() => {
+        toast.dismiss(toastId);
+        toast.error("checkout failed");
+      });
+
+    // const response = await fetch("/api/stripe", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(cartItems),
+    // });
+    // if (response.statusCode === 500) return;
+    // const data = await response.json();
+    // toast.loading("Redirecting...");
+    // stripe.redirectToCheckout({ sessionId: data.id });
+  };
+
+  const userInfo = {};
 
   return (
     <>
@@ -33,12 +77,21 @@ const OrderSummaryBox = () => {
               <ProductPrice price={totalAmount} />
             </div>
           </div>
-          <Link
-            href="/order"
-            className="block bg-palette-primary md:mt-8 py-3 rounded-lg text-palette-side text-center shadow-lg"
-          >
-            {en.order}
-          </Link>
+          {userInfo ? (
+            <button
+              className="bg-palette-primary md:mt-8 py-3 rounded-lg text-palette-side text-center shadow-lg w-full"
+              onClick={handleCheckout}
+            >
+              {en.order}
+            </button>
+          ) : (
+            <Link
+              href="/order"
+              className="block bg-palette-primary md:mt-8 py-3 rounded-lg text-palette-side text-center shadow-lg"
+            >
+              {en.order}
+            </Link>
+          )}
         </div>
       ) : (
         <p className="text-palette-mute text-lg mx-auto mt-12">
