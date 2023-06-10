@@ -1,5 +1,5 @@
 const en: { [key: string]: string } = {
-  mainPage: "Shope Online Main Page",
+  mainPage: "Home",
   search: "Search",
   login: "Login",
   logout: "Logout",

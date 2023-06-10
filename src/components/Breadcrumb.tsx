@@ -22,14 +22,12 @@ const Breadcrumb = () => {
     if (pathname) {
       const paths = pathname.split("/");
       paths.shift();
-
       const pathsArray = paths.map((path, i) => {
         return {
           breadcrumb: path,
           href: "/" + paths.slice(0, i + 1).join("/"),
         };
       });
-
       setBreadcrumbs(pathsArray);
     }
   }, [pathname]);

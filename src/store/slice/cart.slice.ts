@@ -18,7 +18,6 @@ const cartSlice = createSlice({
       action: PayloadAction<{ product: Product; quantity: number }>
     ) {
       const newItem = action.payload.product;
-
       const existingItem = state.items.find(
         (item) => item.slug.current === newItem.slug.current
       );
