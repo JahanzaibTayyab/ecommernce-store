@@ -43,7 +43,7 @@ const SubMenu: React.FC<Props> = ({ subMenuItems }) => {
               return (
                 <div className="py-3" key={`${menuTitle}-${index}`}>
                   <Link
-                    href={`/${activeMenuItemText}/${menuTitle.slug}`}
+                    href={`/${activeMenuItemText}/${menuTitle.slug?.trim()}`}
                     className="block text-sm ml-6  font-bold px-2 border-l-4 border-palette-primary rounded-sm hover:text-palette-primary transition-color duration-300 capitalize"
                     onClick={() => dispatch(megaMenuActions.closeMegaMenu())}
                   >
@@ -52,7 +52,7 @@ const SubMenu: React.FC<Props> = ({ subMenuItems }) => {
                   {menuTitle.subtitles.map((subTitle, index) => {
                     return (
                       <Link
-                        href={`/${activeMenuItemText}/${menuTitle.slug}/${subTitle}`}
+                        href={`/${activeMenuItemText}/${menuTitle.slug?.trim()}/${subTitle.trim()}`}
                         key={`${subTitle}-${index}`}
                         className="block py-2 hover:text-palette-primary transition-color duration-200 capitalize"
                         onClick={() =>

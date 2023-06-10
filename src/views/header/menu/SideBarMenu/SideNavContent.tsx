@@ -8,6 +8,7 @@ import { activeMenuItemActions } from "@/store/slice/activeMenuItem.slice";
 import { DropDown } from "@/types/dropDown";
 import MenuItems from "@/components/MenuItems/MenuItems";
 import en from "@/locales/en";
+import { productsSlug } from "@/utils/contsants";
 
 const SideNavContent = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,11 @@ const SideNavContent = () => {
   ) => {
     dispatch(sideNavBarActions.setSidebarEntries(sidebarSideContent));
     dispatch(sideNavBarActions.openSidebar());
-    dispatch(activeMenuItemActions.setActiveMenuItemText(activeItemName));
+    dispatch(
+      activeMenuItemActions.setActiveMenuItemText(
+        `${productsSlug}/${activeItemName}`
+      )
+    );
     dispatch(activeMenuItemActions.setActiveMenuItemIndex(activeItemIndex));
   };
   return (

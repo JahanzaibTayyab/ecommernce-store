@@ -6,6 +6,7 @@ import { Product } from "@/types/products";
 import { urlForImage } from "@/lib/sanityClient";
 import CardActions from "./CardActions";
 import ProductPrice from "../ProductPrice";
+import { productsSlug } from "@/utils/contsants";
 
 interface Props {
   product: Product;
@@ -15,7 +16,7 @@ const Card: React.FC<Props> = ({ product }) => {
   return (
     <div className="col-span-6 sm:col-span-3 md:col-span-4 lg:col-span-3 2xl:col-span-2 shadow-xl my-1 md:my-4 ltr:mr-2 rtl:ml-1 md:mx-6  bg-palette-card rounded-xl flex relative">
       <Link
-        href={`/${product.category[0]}/${product.category[1]}/${product.brand}/${product.slug.current}`}
+        href={`/${productsSlug}/${product.category[0]}/${product.category[1]}/${product.brand}/${product.slug.current}`}
         className="flex md:items-center md:flex-col relative w-full"
       >
         <div className="w-1/2 md:w-full relative bg-slate-400/30 px-1 md:px-6 py-2 rounded-bl-xl rounded-tl-xl md:rounded-tr-xl md:rounded-bl-none rtl:order-2 rtl:md:order-none flex flex-col justify-between items-center">

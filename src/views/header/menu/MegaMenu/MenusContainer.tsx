@@ -5,6 +5,7 @@ import { activeMenuItemActions } from "@/store/slice/activeMenuItem.slice";
 import MenuItems from "@/components/MenuItems/MenuItems";
 import { DropDown } from "@/types/dropDown";
 import SubMenu from "./SubMenu";
+import { productsSlug } from "@/utils/contsants";
 
 const MenusContainer = () => {
   const [subMenuItems, setSubMenuItems] = useState<DropDown[]>();
@@ -19,14 +20,22 @@ const MenusContainer = () => {
   ) => {
     setSubMenuItems(submenuList);
     dispatch(activeMenuItemActions.setActiveMenuItemIndex(activeItemIndex));
-    dispatch(activeMenuItemActions.setActiveMenuItemText(activeItemName));
+    dispatch(
+      activeMenuItemActions.setActiveMenuItemText(
+        `${productsSlug}/${activeItemName}`
+      )
+    );
   };
 
   useEffect(() => {
     setSubMenuItems(menuItems[0]?.productsGroup);
     return () => {
       dispatch(activeMenuItemActions.setActiveMenuItemIndex(0));
-      dispatch(activeMenuItemActions.setActiveMenuItemText("stationery"));
+      dispatch(
+        activeMenuItemActions.setActiveMenuItemText(
+          `${productsSlug}/stationery`
+        )
+      );
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

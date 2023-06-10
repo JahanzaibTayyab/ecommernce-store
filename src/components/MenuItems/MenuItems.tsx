@@ -8,6 +8,7 @@ import { DropDown } from "@/types/dropDown";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
 import { ActiveMenuItemRootState } from "@/types/activeMenuItem";
 import { category } from "@/types/categories";
+import { productsSlug } from "@/utils/contsants";
 
 interface Props {
   onClick?: (
@@ -77,7 +78,7 @@ const MenuItems: React.FC<Props> = (props) => {
                 ) : null}
               </div>
             ) : (
-              <Link href={`/${item.slug}`}>
+              <Link href={`/${productsSlug}/${item.slug.trim()}`}>
                 <div
                   className={`flex items-center mt-3 px-5  cursor-pointer text-sm ${
                     index === activeMenuItemIndex

@@ -52,7 +52,10 @@ const Breadcrumb = () => {
             return (
               <li className="flex items-center" key={breadcrumb.href}>
                 <span>/</span>
-                <Link href={breadcrumb.href} className="inline-block px-2">
+                <Link
+                  href={breadcrumb.href}
+                  className="inline-block px-2 capitalize"
+                >
                   {en[convertBreadcrumb(breadcrumb.breadcrumb)]
                     ? en[convertBreadcrumb(breadcrumb.breadcrumb)]
                     : convertBreadcrumb(breadcrumb.breadcrumb)}
