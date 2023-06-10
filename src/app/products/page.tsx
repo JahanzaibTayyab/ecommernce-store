@@ -4,7 +4,7 @@ import ProductList from "@/components/productList/ProductList";
 
 const getProductList = async () => {
   try {
-    return await sanityClient.fetch(`*[_type == 'product'']`);
+    return await sanityClient.fetch(`*[_type == 'product']`);
   } catch (err) {
     console.log(err);
   }
