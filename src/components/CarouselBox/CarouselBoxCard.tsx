@@ -15,7 +15,7 @@ const CarouselBoxCard: React.FC<Props> = ({ product }) => {
     <div className="w-full h-full px-2 my-2">
       <Link
         className="flex flex-col w-full p-3 shadow-lg backdrop-filter backdrop-blur-[10px] bg-palette-card/80 rounded-md"
-        href={`/${productsSlug}${product.category[0]}/${product.category[1]}/${product.brand}/${product.slug.current}`}
+        href={`/${productsSlug}/${product.category[0]}/${product.category[1]}/${product.brand}/${product.slug.current}`}
       >
         <div className="text-center flex-grow">
           {product?.image[0] && (

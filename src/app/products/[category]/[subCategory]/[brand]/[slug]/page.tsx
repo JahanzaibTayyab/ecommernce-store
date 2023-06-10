@@ -1,6 +1,6 @@
 import { sanityClient } from "@/lib/sanityClient";
 import { Product } from "@/types/products";
-// import ProductList from "@/components/productList/ProductList";
+import ProductDetails from "@/components/productDetails";
 
 const getSubCategoryBrandsProductList = async (context: any) => {
   const subCategory = context?.subCategory;
@@ -39,7 +39,7 @@ const ProductDetailPage = async ({ params }: productDetailParams) => {
   const product: Product = await getSubCategoryBrandsProduct(params.slug);
   return (
     <div>
-      <div>Product Detail Page</div>
+      <ProductDetails product={product} products={products} />
     </div>
   );
 };

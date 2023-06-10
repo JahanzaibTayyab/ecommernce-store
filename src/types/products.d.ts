@@ -26,7 +26,7 @@ export type Slug = {
   current: string;
 };
 
-export type Image = {
+export type TImage = {
   _key: string;
   _type: "image";
   asset: {
