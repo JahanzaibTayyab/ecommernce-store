@@ -4,7 +4,7 @@ import CategorySmBox from "./CategorySmBox";
 import { categoryLgContent } from "@/utils/mock/category-lg";
 import CategoryLgBox from "./CategoryLgBox";
 import SectionTitle from "@/components/SectionTitle";
-import {productSlug} from "@/utils/contsants"
+import { productsSlug } from "@/utils/contsants";
 
 const Category = () => {
   return (
@@ -17,7 +17,7 @@ const Category = () => {
               bgc={categoryItem.bgc}
               imgSrc={categoryItem.imgSrc}
               categoryTitle={categoryItem.categoryTitle}
-              href={categoryItem.href}
+              href={`${productsSlug}/${categoryItem.href}`}
               key={categoryItem.categoryTitle}
             />
           );
@@ -42,7 +42,7 @@ const Category = () => {
                 title={title}
                 description={description}
                 styles={styles}
-                href={`${productSlug}/${href}`}
+                href={`${productsSlug}/${href}`}
                 imgSrc={imgSrc}
                 imgWidth={imgWidth}
                 imgHeight={imgHeight}
@@ -51,6 +51,7 @@ const Category = () => {
           }
         )}
       </div>
+
     </div>
   );
 };
