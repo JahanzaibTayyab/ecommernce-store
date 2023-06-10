@@ -4,6 +4,7 @@ import CategorySmBox from "./CategorySmBox";
 import { categoryLgContent } from "@/utils/mock/category-lg";
 import CategoryLgBox from "./CategoryLgBox";
 import SectionTitle from "@/components/SectionTitle";
+import {productSlug} from "@/utils/contsants"
 
 const Category = () => {
   return (
@@ -41,7 +42,7 @@ const Category = () => {
                 title={title}
                 description={description}
                 styles={styles}
-                href={href}
+                href={`${productSlug}/${href}`}
                 imgSrc={imgSrc}
                 imgWidth={imgWidth}
                 imgHeight={imgHeight}
