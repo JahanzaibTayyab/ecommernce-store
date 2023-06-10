@@ -219,7 +219,7 @@ const en: { [key: string]: string } = {
   cart: "Shopping Cart",
   hi: "Hi!",
   loginExplanation:
-    "Besides registering, you can also test the template with test account information(email: test@info.com - Password: 123456)",
+    "Besides registering, you can also test the template with test account information(email: test@shope.com - Password: 123456)",
   testAccount: "test account",
   userName: "User Name",
   password: "Password",
