@@ -13,11 +13,10 @@ const stripe = new Stripe(key, {
 export async function POST(request: NextRequest) {
   const userId = request.headers.get("authorization");
   const body = await request.json();
-  console.log("🚀 ~ file: route.ts:16 ~ POST ~ body:", body);
   try {
     if (userId) {
       try {
-        const result = [];
+        const result: any = [];
         if (result.length != 0) {
           const params: Stripe.Checkout.SessionCreateParams = {
             submit_type: "pay",
@@ -29,10 +28,10 @@ export async function POST(request: NextRequest) {
               { shipping_rate: "shr_1NHVQpCrT5XqHJbIQgXkFymH" },
               { shipping_rate: "shr_1NHVUpCrT5XqHJbI9Nfnc9ve" },
             ],
-            line_items: result.map((item) => {
+            line_items: result.map((item: any) => {
               return {
                 price_data: {
-                  currency: "usd",
+                  currency: "pkr",
                   product_data: {
                     name: item.product_name,
                     images: [item.product_image_url],
