@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 import { useFormik } from "formik";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -38,6 +39,14 @@ const SignUp = () => {
   async function LoginHandler(user: User) {
     const { email, password } = user;
     try {
+      const userData = await signIn("credentials", {
+        redirect: false,
+        ...user,
+      });
+      console.log(
+        "🚀 ~ file: page.tsx:46 ~ LoginHandler ~ userData:",
+        userData
+      );
       // const { data } = await axios.post("/api/users/login", {
       //   email,
       //   password,
