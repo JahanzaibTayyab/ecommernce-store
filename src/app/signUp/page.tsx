@@ -15,7 +15,7 @@ const SignUpSchema = Yup.object().shape({
   password: Yup.string().min(6).required("Required"),
 });
 
-const Login = () => {
+const SignUp = () => {
   const router = useRouter();
 
   const userInfo = null;
@@ -109,11 +109,13 @@ const Login = () => {
         </div>
       </div>
       <Link href={`/login`} className="block my-4">
-        <span className="text-sm text-palette-mute">{en.doHaveAnAccount}</span>
+        <span className="text-sm text-palette-mute">
+          {en.alreadyHaveAnAccount}
+        </span>
         <span className="text-cyan-500">Login</span>
       </Link>
     </div>
   );
 };
 
-export default Login;
+export default SignUp;

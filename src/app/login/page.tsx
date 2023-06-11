@@ -96,11 +96,9 @@ const SignUp = () => {
           </form>
         </div>
       </div>
-      <Link href={`/login`} className="block my-4">
-        <span className="text-sm text-palette-mute">
-          {en.alreadyHaveAnAccount}
-        </span>
-        <span className="text-cyan-500">Login</span>
+      <Link href={`/signUp`} className="block my-4">
+        <span className="text-sm text-palette-mute">{en.doHaveAnAccount}</span>
+        <span className="text-cyan-500">Sign Up</span>
       </Link>
     </div>
   );
