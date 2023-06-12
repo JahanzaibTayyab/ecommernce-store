@@ -56,7 +56,7 @@ const Card: React.FC<Props> = ({ product }) => {
           <ProductPrice price={product.price} discount={product.discount} />
         </div>
       </Link>
-      <CardActions product={product} />
+      <CardActions product={product} productsSlug={productsSlug} />
     </div>
   );
 };

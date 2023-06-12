@@ -2692,7 +2692,7 @@ debounce@1.0.0:
   dependencies:
     date-now "1.0.1"
 
-debug@2:
+debug@2, debug@^2.1.3:
   version "2.6.9"
   resolved "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz"
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
@@ -4805,6 +4805,13 @@ json5@^2.2.2, json5@^2.2.3:
   resolved "https://registry.npmjs.org/json5/-/json5-2.2.3.tgz"
   integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
 
+jsonp@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/jsonp/-/jsonp-0.2.1.tgz#a65b4fa0f10bda719a05441ea7b94c55f3e15bae"
+  integrity sha512-pfog5gdDxPdV4eP7Kg87M8/bHgshlZ5pybl+yKxAnCZ5O7lCIn7Ixydj03wOlnDQesky2BPyA91SQ+5Y/mNwzw==
+  dependencies:
+    debug "^2.1.3"
+
 jsonwebtoken@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-9.0.0.tgz#d0faf9ba1cc3a56255fe49c0961a67e520c1926d"
@@ -5239,6 +5246,13 @@ next-sanity@^4.3.3:
     "@sanity/preview-kit" "^1.5.4"
     "@sanity/webhook" "^2.0.0"
     groq "^3.0.0"
+
+next-share@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/next-share/-/next-share-0.20.0.tgz#2fe5ac18a8e96497625d017708d2ca1347414216"
+  integrity sha512-7EZem/fJe9QljTt4SrhKzKjC5i+aiBw5YxIGJNH1+G+El0tKzwAYcrm35KWe+R3j4apqWl+Bpyjo2FKbpj7fow==
+  dependencies:
+    jsonp "^0.2.1"
 
 next-themes@^0.2.1:
   version "0.2.1"

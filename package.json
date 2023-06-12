@@ -38,6 +38,7 @@
     "next": "13.4.4",
     "next-auth": "^4.22.1",
     "next-sanity": "^4.3.3",
+    "next-share": "^0.20.0",
     "next-themes": "^0.2.1",
     "nextjs-progressbar": "^0.0.16",
     "postcss": "8.4.23",
