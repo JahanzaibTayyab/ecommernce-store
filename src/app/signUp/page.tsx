@@ -65,6 +65,7 @@ const SignUp = () => {
         }),
       });
       const res = await data.json();
+      console.log("res", res);
       if (data.status === 200) {
         toast.success("User created");
         setShowModal(true);
@@ -74,6 +75,7 @@ const SignUp = () => {
       }
     } catch (err: any) {
       setDisableButton(false);
+      console.log("err", err);
       toast.error(getError(err));
     }
   }
