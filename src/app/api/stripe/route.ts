@@ -2,8 +2,9 @@ import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { authOptions } from "@/lib/auth";
+import { Product } from "@/types/products";
 
-const key = process.env.NEXT_PUBLIC_STRIPE_PRIVATE_KEY || "";
+const key = process.env.STRIPE_SECRET_KEY || "";
 
 const stripe = new Stripe(key, {
   apiVersion: "2022-11-15",
@@ -26,21 +27,20 @@ export async function POST(request: NextRequest) {
               { shipping_rate: "shr_1NHVQpCrT5XqHJbIQgXkFymH" },
               { shipping_rate: "shr_1NHVUpCrT5XqHJbI9Nfnc9ve" },
             ],
-            line_items: body.map((item: any) => {
+            line_items: body.map((item: Product) => {
               return {
                 price_data: {
                   currency: "pkr",
                   product_data: {
-                    name: item.product_name,
-                    images: [item.product_image_url],
+                    name: item.name,
                   },
-                  unit_amount: item.product_price * 100,
+                  unit_amount: item.price * 100,
                 },
                 adjustable_quantity: {
                   enabled: true,
                   minimum: 1,
                 },
-                quantity: item.product_quantity,
+                quantity: item.quantity,
               };
             }),
             phone_number_collection: {
@@ -59,7 +59,6 @@ export async function POST(request: NextRequest) {
           const session = await stripe.checkout.sessions.create(params);
           return NextResponse.json(session, { status: 200 });
         } else {
-          console.log("Comes Here");
           return NextResponse.json({ success: false }, { status: 500 });
         }
       } catch (error) {

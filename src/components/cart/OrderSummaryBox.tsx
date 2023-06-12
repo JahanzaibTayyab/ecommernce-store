@@ -23,6 +23,10 @@ const OrderSummaryBox = () => {
   const handleCheckout = async () => {
     const toastId = toast.loading("trying checkout");
     const stripe = await getStripePromise();
+    console.log(
+      "🚀 ~ file: OrderSummaryBox.tsx:26 ~ handleCheckout ~ stripe:",
+      stripe
+    );
 
     fetch(`api/stripe`, {
       method: "POST",
@@ -34,7 +38,7 @@ const OrderSummaryBox = () => {
       .then((response) => {
         toast.dismiss(toastId);
         if (response.success === false || !stripe) {
-          toast.error("checkout failed2");
+          toast.error("checkout failed");
         } else {
           toast.loading("Redirecting...");
           stripe.redirectToCheckout({ sessionId: response.id });

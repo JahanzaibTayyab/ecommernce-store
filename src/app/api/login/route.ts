@@ -4,11 +4,11 @@ import { eq } from "drizzle-orm";
 import Joi from "joi";
 import { comparePassword } from "@/lib/bcrypt";
 import { users } from "@/lib/db/schema/users";
+import { signJwtAccessToken } from "@/lib/jwt";
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
     const body = await req.json();
-    console.log("🚀 ~ file: route.ts:11 ~ POST ~ body:", body);
     const { error } = validateData(body);
     if (error)
       return new Response(error.details[0].message, {
@@ -24,7 +24,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
         response[0].password
       );
       if (isPasswordMatch) {
-        return new Response(JSON.stringify({ user: response[0] }), {
+        const { password, ...userWithoutPass } = response[0];
+        const accessToken = signJwtAccessToken(userWithoutPass);
+        const result = {
+          ...userWithoutPass,
+          accessToken,
+        };
+        return new Response(JSON.stringify({ user: result }), {
           status: 200,
         });
       } else {

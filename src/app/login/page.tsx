@@ -43,7 +43,7 @@ const SignUp = () => {
     setDisableButton(true);
     try {
       const response = await signIn("credentials", {
-        redirect: true,
+        redirect: false,
         ...user,
       });
       if (response?.ok) {
