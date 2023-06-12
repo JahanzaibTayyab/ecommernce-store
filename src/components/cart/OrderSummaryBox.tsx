@@ -45,10 +45,10 @@ const OrderSummaryBox = () => {
         }
       })
       .catch((err) => {
-        console.log(
-          "🚀 ~ file: OrderSummaryBox.tsx:44 ~ handleCheckout ~ err:",
-          err
-        );
+        
+
+
+
 
         toast.dismiss(toastId);
         toast.error("checkout failed");
@@ -83,7 +83,7 @@ const OrderSummaryBox = () => {
             </button>
           ) : (
             <Link
-              href="/order"
+              href="/login"
               className="block bg-palette-primary md:mt-8 py-3 rounded-lg text-palette-side text-center shadow-lg"
             >
               {en.order}
