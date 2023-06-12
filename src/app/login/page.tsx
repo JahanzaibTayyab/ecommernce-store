@@ -1,13 +1,14 @@
 "use client";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useFormik } from "formik";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "@/types/user";
 import * as Yup from "yup";
 import en from "@/locales/en";
 import Input from "@/components/Input";
+import toast from "react-hot-toast";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -15,14 +16,15 @@ const LoginSchema = Yup.object().shape({
 });
 
 const SignUp = () => {
+  const { data } = useSession();
   const router = useRouter();
+  const [disableButton, setDisableButton] = useState(false);
 
-  const userInfo = null;
   useEffect(() => {
-    if (userInfo) {
+    if (data?.user) {
       router.push("/");
     }
-  }, [userInfo, router]);
+  }, [data, router]);
 
   const formik = useFormik({
     initialValues: {
@@ -37,24 +39,23 @@ const SignUp = () => {
   });
 
   async function LoginHandler(user: User) {
-    const { email, password } = user;
+    const toastId = toast.loading("trying Login");
+    setDisableButton(true);
     try {
-      const userData = await signIn("credentials", {
+      const response = await signIn("credentials", {
         redirect: false,
         ...user,
       });
-      console.log(
-        "🚀 ~ file: page.tsx:46 ~ LoginHandler ~ userData:",
-        userData
-      );
-      // const { data } = await axios.post("/api/users/login", {
-      //   email,
-      //   password,
-      // });
-      // dispatch(userInfoActions.userLogin(data));
-      // jsCookie.set("userInfo", JSON.stringify(data));
-      // router.push("/");
-    } catch (err: any) {}
+      if (response?.ok) {
+        toast.dismiss(toastId);
+        toast.success("User login Successfully");
+        router.push("/");
+      }
+    } catch (err: any) {
+      toast.dismiss(toastId);
+      toast.error("Invalid email or password");
+      setDisableButton(false);
+    }
   }
 
   return (
@@ -98,6 +99,7 @@ const SignUp = () => {
             />
             <button
               type="submit"
+              disabled={disableButton}
               className="bg-palette-primary w-full py-4 rounded-lg text-palette-side text-xl shadow-lg"
             >
               Login

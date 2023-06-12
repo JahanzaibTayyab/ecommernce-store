@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { db } from "@/lib/db/drizzle";
 import Joi from "joi";
 import { hashPassword } from "@/lib/bcrypt";
-import { NewUser, users } from "@/lib/db/schema/users";
+import { users } from "@/lib/db/schema/users";
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {

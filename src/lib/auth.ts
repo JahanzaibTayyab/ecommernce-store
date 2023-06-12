@@ -1,5 +1,6 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { API_ROOT } from "@/config";
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -17,14 +18,17 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const res = await fetch("/api/login", {
+        const res = await fetch(`${API_ROOT}/api/login`, {
           method: "POST",
-          body: JSON.stringify(credentials),
+          body: JSON.stringify({
+            email: credentials?.email,
+            password: credentials?.password,
+          }),
           headers: { "Content-Type": "application/json" },
         });
         const user = await res.json();
         if (res.ok && user) {
-          return user;
+          return user.user;
         }
         return null;
       },
