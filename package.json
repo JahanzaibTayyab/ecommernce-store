@@ -31,6 +31,7 @@
     "formik": "^2.4.1",
     "joi": "^17.9.2",
     "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.0",
     "lucide-react": "^0.233.0",
     "next": "13.4.4",
     "next-auth": "^4.22.1",
@@ -62,6 +63,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/js-cookie": "^3.0.3",
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/react-redux": "^7.1.25",
     "@types/react-slick": "^0.23.10",
     "@types/react-star-rating-component": "^1.4.1",
