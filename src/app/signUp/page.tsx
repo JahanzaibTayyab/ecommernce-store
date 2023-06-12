@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { User } from "@/types/user";
 import { getError } from "@/utils/helper";
@@ -28,15 +29,15 @@ const SignUpSchema = Yup.object().shape({
 
 const SignUp = () => {
   const router = useRouter();
+  const { data } = useSession();
   const [disableButton, setDisableButton] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const userInfo = null;
   useEffect(() => {
-    if (userInfo) {
+    if (data?.user) {
       router.push("/");
     }
-  }, [userInfo, router]);
+  }, [data, router]);
 
   const formik = useFormik({
     initialValues: {
@@ -54,10 +55,14 @@ const SignUp = () => {
   async function SignUpHandler(user: User) {
     try {
       setDisableButton(true);
-      const data = await fetch("api/signUp", {
+      const data = await fetch("api/registerUser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
+        body: JSON.stringify({
+          name: user.name,
+          email: user.email,
+          password: user.password,
+        }),
       });
       const res = await data.json();
       if (data.status === 200) {
