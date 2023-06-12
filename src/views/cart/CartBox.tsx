@@ -1,15 +1,16 @@
 "use client";
 import Link from "next/link";
 import React from "react";
+import { useSession } from "next-auth/react";
 import { useSelector, useDispatch } from "react-redux";
 import { cartUiActions } from "@/store/slice/cartUI.slice";
 import { CartRootState } from "@/types/cart";
 import { gbpCurrencyFormat } from "@/utils/helper";
 import CartItem from "./CartItem";
-import { IUserInfoRootState } from "@/types/user";
 import en from "@/locales/en";
 
 const CartBox = () => {
+  const { data } = useSession();
   const dispatch = useDispatch();
 
   const cartItemQuantity = useSelector(
@@ -21,10 +22,6 @@ const CartBox = () => {
   );
 
   const cartItems = useSelector((state: CartRootState) => state.cart.items);
-
-  const userInfo = useSelector(
-    (state: IUserInfoRootState) => state.userInfo.userInformation
-  );
 
   function onCloseCartBoxHandler() {
     dispatch(cartUiActions.toggleCartBox(false));
@@ -65,7 +62,7 @@ const CartBox = () => {
                 Rs ${gbpCurrencyFormat(cartTotalAmount)}
               </p>
             </div>
-            {!userInfo ? (
+            {!data?.user ? (
               <div onClick={onCloseCartBoxHandler}>
                 <Link
                   href={"/login"}

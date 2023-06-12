@@ -1,15 +1,12 @@
 "use client";
 import React from "react";
-import { useSelector } from "react-redux";
-import { IUserInfoRootState } from "@/types/user";
+import { useSession } from "next-auth/react";
 import UserAccountBtn from "./UserAccountBtn";
 import LoginBtn from "./LoginBtn";
 
 const User = () => {
-  const userInfo = useSelector(
-    (state: IUserInfoRootState) => state.userInfo.userInformation
-  );
-  return <div>{userInfo ? <UserAccountBtn /> : <LoginBtn />}</div>;
+  const { data } = useSession();
+  return <div>{data?.user ? <UserAccountBtn /> : <LoginBtn />}</div>;
 };
 
 export default User;

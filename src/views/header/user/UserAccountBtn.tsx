@@ -1,16 +1,20 @@
 "use client";
 import React, { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { AiOutlineUser } from "react-icons/ai";
 import { HiChevronDown } from "react-icons/hi";
 import { Transition } from "react-transition-group";
 import UserAccountBox from "./UserAccountBox";
 
 const UserAccountBtn = () => {
+  const router = useRouter();
   const [isUserBoxOpen, setIsUserBoxOpen] = useState(false);
   const nodeRef = useRef<HTMLDivElement>(null);
 
   function onClose() {
     setIsUserBoxOpen((prev) => prev && false);
+    router.replace("/");
+    window.location.reload();
   }
 
   function onIconClickHandler() {

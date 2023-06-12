@@ -5,10 +5,12 @@ import toast from "react-hot-toast";
 import getStripePromise from "@/lib/stripe";
 import { useSelector } from "react-redux";
 import { CartRootState } from "@/types/cart";
+import { useSession } from "next-auth/react";
 import ProductPrice from "../ProductPrice";
 import en from "@/locales/en";
 
 const OrderSummaryBox = () => {
+  const { data } = useSession();
   const totalAmount = useSelector(
     (state: CartRootState) => state.cart.totalAmount
   );
@@ -32,31 +34,22 @@ const OrderSummaryBox = () => {
       .then((response) => {
         toast.dismiss(toastId);
         if (response.success === false || !stripe) {
-          toast.error("checkout failed");
+          toast.error("checkout failed2");
         } else {
           toast.loading("Redirecting...");
           stripe.redirectToCheckout({ sessionId: response.id });
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(
+          "🚀 ~ file: OrderSummaryBox.tsx:44 ~ handleCheckout ~ err:",
+          err
+        );
+
         toast.dismiss(toastId);
         toast.error("checkout failed");
       });
-
-    // const response = await fetch("/api/stripe", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(cartItems),
-    // });
-    // if (response.statusCode === 500) return;
-    // const data = await response.json();
-    // toast.loading("Redirecting...");
-    // stripe.redirectToCheckout({ sessionId: data.id });
   };
-
-  const userInfo = {};
 
   return (
     <>
@@ -77,7 +70,7 @@ const OrderSummaryBox = () => {
               <ProductPrice price={totalAmount} />
             </div>
           </div>
-          {userInfo ? (
+          {data?.user ? (
             <button
               className="bg-palette-primary md:mt-8 py-3 rounded-lg text-palette-side text-center shadow-lg w-full"
               onClick={handleCheckout}

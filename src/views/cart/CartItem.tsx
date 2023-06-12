@@ -44,7 +44,7 @@ const CartItem: React.FC<Props> = ({ product }) => {
     <div className="flex items-center flex-wrap sm:my-4 sm:py-4 px-2 border-b-2">
       <div className="lg:w-1/2 sm:min-w-[290px]">
         <Link
-          href={`/${product.category[0]}/${product.category[1]}/${product.category[2]}/${product.slug.current}`}
+          href={`/${product.category[0]}/${product.category[1]}/${product.brand}/${product.slug.current}`}
           className="flex flex-wrap sm:flex-nowrap justify-center items-center flex-grow"
         >
           <div className="sm:min-w-[100px] md:min-w-[130px]">

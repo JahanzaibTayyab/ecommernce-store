@@ -18,19 +18,24 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const res = await fetch(`${API_ROOT}/api/login`, {
-          method: "POST",
-          body: JSON.stringify({
-            email: credentials?.email,
-            password: credentials?.password,
-          }),
-          headers: { "Content-Type": "application/json" },
-        });
-        const user = await res.json();
-        if (res.ok && user) {
-          return user.user;
+        try {
+          const res = await fetch(`${API_ROOT}/api/login`, {
+            method: "POST",
+            body: JSON.stringify({
+              email: credentials?.email,
+              password: credentials?.password,
+            }),
+            headers: { "Content-Type": "application/json" },
+          });
+          const user = await res.json();
+
+          if (res.ok && user) {
+            return user.user;
+          }
+          return null;
+        } catch (err) {
+          console.log(err);
         }
-        return null;
       },
     }),
   ],

@@ -1,23 +1,21 @@
-// import { db } from '@/lib/db/drizzle';
-// import { NewCartItem, dine_market_cart } from '@/lib/db/schema';
-// import { sql } from 'drizzle-orm';
+import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-// import { asc, eq } from 'drizzle-orm';
 import Stripe from "stripe";
+import { authOptions } from "@/lib/auth";
 
 const key = process.env.NEXT_PUBLIC_STRIPE_PRIVATE_KEY || "";
+
 const stripe = new Stripe(key, {
   apiVersion: "2022-11-15",
 });
 
 export async function POST(request: NextRequest) {
-  const userId = request.headers.get("authorization");
+  const session = await getServerSession(authOptions);
   const body = await request.json();
   try {
-    if (userId) {
+    if (session) {
       try {
-        const result: any = [];
-        if (result.length != 0) {
+        if (body.length != 0) {
           const params: Stripe.Checkout.SessionCreateParams = {
             submit_type: "pay",
             mode: "payment",
@@ -28,7 +26,7 @@ export async function POST(request: NextRequest) {
               { shipping_rate: "shr_1NHVQpCrT5XqHJbIQgXkFymH" },
               { shipping_rate: "shr_1NHVUpCrT5XqHJbI9Nfnc9ve" },
             ],
-            line_items: result.map((item: any) => {
+            line_items: body.map((item: any) => {
               return {
                 price_data: {
                   currency: "pkr",
@@ -45,7 +43,6 @@ export async function POST(request: NextRequest) {
                 quantity: item.product_quantity,
               };
             }),
-
             phone_number_collection: {
               enabled: true,
             },
@@ -56,24 +53,25 @@ export async function POST(request: NextRequest) {
               enabled: true,
             },
             allow_promotion_codes: true,
-
-            success_url: `${request.headers.get(
-              "origin"
-            )}/api/onSuccessPayment?session_id={CHECKOUT_SESSION_ID}&user_id=${userId}`,
+            success_url: `${request.headers.get("origin")}/successPay`,
             cancel_url: `${request.headers.get("origin")}/cart`,
           };
           const session = await stripe.checkout.sessions.create(params);
           return NextResponse.json(session, { status: 200 });
         } else {
+          console.log("Comes Here");
           return NextResponse.json({ success: false }, { status: 500 });
         }
       } catch (error) {
+        console.log("🚀 ~ file: route.ts:70 ~ POST ~ error:", error);
+
         return NextResponse.json({ success: false }, { status: 500 });
       }
     } else {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } catch (error) {
+    console.log("🚀 ~ file: route.ts:78 ~ POST ~ error:", error);
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }

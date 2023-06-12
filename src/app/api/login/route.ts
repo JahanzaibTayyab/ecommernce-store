@@ -8,13 +8,11 @@ import { users } from "@/lib/db/schema/users";
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
     const body = await req.json();
+    console.log("🚀 ~ file: route.ts:11 ~ POST ~ body:", body);
     const { error } = validateData(body);
     if (error)
       return new Response(error.details[0].message, {
         status: 400,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
       });
     const response = await db
       .select()
@@ -28,18 +26,12 @@ export async function POST(req: NextRequest, res: NextResponse) {
       if (isPasswordMatch) {
         return new Response(JSON.stringify({ user: response[0] }), {
           status: 200,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
         });
       } else {
         return new Response(
           JSON.stringify({ message: "Password not matched" }),
           {
             status: 404,
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-            },
           }
         );
       }
@@ -48,9 +40,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
         JSON.stringify({ message: "User not found against this email" }),
         {
           status: 404,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
         }
       );
     }
