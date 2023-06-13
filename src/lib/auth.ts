@@ -1,7 +1,6 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { API_ROOT } from "@/config";
-import axios from "axios";
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -20,14 +19,15 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials, req) {
         try {
-          const res = await axios.post(
-            `${API_ROOT}/api/login`,
-            JSON.stringify({
+          const res = await fetch(`${API_ROOT}/api/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
               email: credentials?.email,
               password: credentials?.password,
-            })
-          );
-          const user = await res.data;
+            }),
+          });
+          const user = await res.json();
           if (res.status === 200 && user) {
             return user.user;
           }
@@ -36,15 +36,6 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  callbacks: {
-    async jwt({ token, user }) {
-      return { ...token, ...user };
-    },
-    async session({ session, token }) {
-      session.user = token as any;
-      return session;
-    },
-  },
   pages: {
     signIn: "/login",
     signOut: "/",

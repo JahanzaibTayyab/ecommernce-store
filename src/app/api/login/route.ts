@@ -25,10 +25,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
       );
       if (isPasswordMatch) {
         const { password, ...userWithoutPass } = response[0];
-        const accessToken = signJwtAccessToken(userWithoutPass);
         const result = {
           ...userWithoutPass,
-          accessToken,
         };
         return new Response(JSON.stringify({ user: result }), {
           status: 200,
