@@ -64,6 +64,8 @@ const SignUp = () => {
           password: user.password,
         }),
       });
+      console.log("🚀 ~ file: page.tsx:67 ~ SignUpHandler ~ data:", data);
+
       const res = await data.json();
       console.log("res", res);
       if (data.status === 200) {
