@@ -13,8 +13,6 @@ const UserAccountBtn = () => {
 
   function onClose() {
     setIsUserBoxOpen((prev) => prev && false);
-    router.replace("/");
-    window.location.reload();
   }
 
   function onIconClickHandler() {

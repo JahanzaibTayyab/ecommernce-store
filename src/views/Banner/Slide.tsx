@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { Banner } from "@/types/banner";
 import { urlForImage } from "@/lib/sanityClient";
+import { productsSlug } from "@/utils/contsants";
 
 const Slide: React.FC<Banner> = ({
   title,
@@ -31,7 +32,7 @@ const Slide: React.FC<Banner> = ({
               {`${description}`}
             </p>
             <Link
-              href={ctaLink}
+              href={`${productsSlug}/${ctaLink}`}
               className="py-2 px-3 sm:py-3 lg:py-2 xl:py-3 sm:px-6 rounded-lg bg-palette-primary/90 hover:bg-palette-primary/100 transition-all duration-300 shadow-lg 2xl:mt-4 mr-auto sm:ml-14 sm:mr-0  inline-block  text-palette-side text-[12px] mt-4"
             >
               {buttonText}

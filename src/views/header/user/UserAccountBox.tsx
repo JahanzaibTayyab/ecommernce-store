@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
+import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoLogOutOutline } from "react-icons/io5";
@@ -9,8 +10,11 @@ interface Props {
   onClose: () => void;
 }
 const UserAccountBox: React.FC<Props> = ({ onClose }) => {
+  const router = useRouter();
   async function onLogoutClickHandler() {
     await signOut();
+    router.replace("/");
+    window.location.reload();
     onClose();
   }
   return (
