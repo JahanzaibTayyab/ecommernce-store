@@ -1,8 +1,8 @@
 import { NextResponse, NextRequest } from "next/server";
-// import { db } from "@/lib/db/drizzle";
+import { db } from "@/lib/db/drizzle";
 import Joi from "joi";
-// import { hashPassword } from "@/lib/bcrypt";
-// import { users } from "@/lib/db/schema/users";
+import { hashPassword } from "@/lib/bcrypt";
+import { users } from "@/lib/db/schema/users";
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
@@ -15,17 +15,17 @@ export async function POST(req: NextRequest, res: NextResponse) {
           "Access-Control-Allow-Origin": "*",
         },
       });
-    // const hashedPassword = await hashPassword(body.password);
-    // const response = await db
-    //   .insert(users)
-    //   .values({
-    //     ...body,
-    //     password: hashedPassword,
-    //   })
-    //   .returning();
+    const hashedPassword = await hashPassword(body.password);
+    const updateData = {
+      ...body,
+      password: hashedPassword,
+    };
+
+    const response = await db.insert(users).values(updateData).returning();
+
     return new Response(
       JSON.stringify({
-        data: body,
+        data: response[0],
         Message: "User Created Successfully",
       }),
       {

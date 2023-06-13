@@ -23,10 +23,6 @@ const OrderSummaryBox = () => {
   const handleCheckout = async () => {
     const toastId = toast.loading("trying checkout");
     const stripe = await getStripePromise();
-    console.log(
-      "🚀 ~ file: OrderSummaryBox.tsx:26 ~ handleCheckout ~ stripe:",
-      stripe
-    );
 
     fetch(`api/stripe`, {
       method: "POST",
@@ -45,11 +41,6 @@ const OrderSummaryBox = () => {
         }
       })
       .catch((err) => {
-        
-
-
-
-
         toast.dismiss(toastId);
         toast.error("checkout failed");
       });

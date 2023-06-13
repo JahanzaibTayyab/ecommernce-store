@@ -6,4 +6,5 @@ export const db = drizzle(sql);
 async function migration() {
   await migrate(db, { migrationsFolder: "drizzle" });
 }
-migration();
+//issue with vercel postgres with edge functions not supported yet
+//migration();

@@ -62,15 +62,12 @@ export async function POST(request: NextRequest) {
           return NextResponse.json({ success: false }, { status: 500 });
         }
       } catch (error) {
-        console.log("🚀 ~ file: route.ts:70 ~ POST ~ error:", error);
-
         return NextResponse.json({ success: false }, { status: 500 });
       }
     } else {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } catch (error) {
-    console.log("🚀 ~ file: route.ts:78 ~ POST ~ error:", error);
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }
