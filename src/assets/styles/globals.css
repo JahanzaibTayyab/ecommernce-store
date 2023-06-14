@@ -205,54 +205,34 @@ select:-webkit-autofill:focus {
   font-size: 14px;
 }
 
-.success-wrapper,
-.cancel-wrapper {
-  background-color: white;
-  min-height: 60vh;
-}
-.success,
-.cancel {
-  width: 1000px;
-  margin: auto;
-  margin-top: 160px;
-  background-color: #dcdcdc;
-  padding: 50px;
-  border-radius: 15px;
+.success {
+  padding: 6rem 0;
+  background-color: #f1f1f1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  text-align: center;
+  border-radius: 15px;
 }
-
 .success .icon {
   color: green;
-  font-size: 40px;
 }
-.success h2 {
-  text-transform: capitalize;
-  margin-top: 15px 0px;
-  font-weight: 900;
-  font-size: 40px;
-  color: #324d67;
+.success h1 {
+  font-size: 2.75rem;
+  margin: 0.5rem 0;
 }
-
-.success .email-msg {
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
+.success .btn {
+  padding: 15px;
+  width: 400px;
+  font-size: 1.125rem;
+  border-radius: 10px;
 }
-.cancel p {
-  font-size: 20px;
-  font-weight: 600;
+.success .description,
+.success button {
+  margin-top: 2rem;
 }
-.success .description {
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  margin: 10px;
-  margin-top: 30px;
-}
-.success .description .email {
+.success .description a {
   margin-left: 5px;
-  color: #f02d34;
+  color: red;
 }

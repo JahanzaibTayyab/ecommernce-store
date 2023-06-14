@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { authOptions } from "@/lib/auth";
 import { Product } from "@/types/products";
+import { calculateDiscountPercentage } from "@/utils/helper";
 
 const key = process.env.STRIPE_SECRET_KEY || "";
 
@@ -34,7 +35,10 @@ export async function POST(request: NextRequest) {
                   product_data: {
                     name: item.name,
                   },
-                  unit_amount: item.price * 100,
+                  unit_amount:
+                    (item.discount
+                      ? calculateDiscountPercentage(item.price, item.discount)
+                      : item.price) * 100,
                 },
                 adjustable_quantity: {
                   enabled: true,
